@@ -1,13 +1,12 @@
 # NSL-KDD-Dataset
 
-***Note
--------
-I couldn't find the NSL-KDD dataset anywhere except via the Wayback Machine. This is just a backup. The data was found via  https://web.archive.org/web/20150205070216/http://nsl.cs.unb.ca/NSL-KDD/
+
 
 
 Abstract
 --------
-NSL-KDD is a data set suggested to solve some of the inherent problems of the KDD'99 data set which are mentioned in [1]. Although, this new version of the KDD data set still suffers from some of the problems discussed by McHugh [2] and may not be a perfect representative of existing real networks, because of the lack of public data sets for network-based IDSs, we believe it still can be applied as an effective benchmark data set to help researchers compare different intrusion detection methods. Furthermore, the number of records in the NSL-KDD train and test sets are reasonable. This advantage makes it affordable to run the experiments on the complete set without the need to randomly select a small portion. Consequently, evaluation results of different research work will be consistent and comparable.
+
+Um HIDS (Host Intrusion Detection System) é um sistema de detecção de intrusões que monitora e analisa atividades suspeitas ou maliciosas em um único host ou dispositivo. Ele é projetado para proteger o host em si, em oposição a um IDS de rede que monitora o tráfego de rede em busca de atividades suspeitas em toda a rede. O projeto consistiu na análise do DataSet NSL-KDD. O NSL-KDD possui uma ampla variedade de tráfego de rede simulado, incluindo registros normais e ataques simulados. Ele contém no total 41 atributos, dos quais 34 são numéricos e 7 são categóricos. Os ataques presentes no conjunto de dados são classificados em quatro categorias principais: DoS (Denial of Service), Probe, R2L (Remote to Local) e U2R (User to Root). O conjunto de dados também contém instâncias normais, que representam o tráfego legítimo da rede. O objetivo do projeto foi a análise desse DataSet e o treinamento de uma MLP para idenditificar possíveis eventos anômalos que pudessem representar falhas de segurança nas rotinas do servidor. Primeiramente foi abordado uma solução utilizando Decision Trees básico do SkLearn, e em seguida, a solução usando TensorFlow/Keras e Redes Neurais Artificiais para fins de comparação entre diferentes classificadores. Existem ainda outras soluções básicas usando apenas Sklearn, tais como: RandomForestClassifier, GaussianNB, KNeighborsClassifier que foram usadas também para comparação de resultados. Com o PySpark não consegui ajustar corretamente e fazer as configurações necessárias.
 
 Data Files
 ----------
@@ -27,15 +26,6 @@ Data Files
 **KDDTest-21.ARFF** - A subset of the KDDTest+.arff file which does not include records with difficulty level of 21 out of 21
 
 **KDDTest-21.TXT** - A subset of the KDDTest+.txt file which does not include records with difficulty level of 21 out of 21
-
-
-Improvements to the KDD'99 data set
------------------------------------
-The NSL-KDD data set has the following advantages over the original KDD data set:
-*	It does not include redundant records in the train set, so the classifiers will not be biased towards more frequent records.
-* There is no duplicate records in the proposed test sets; therefore, the performance of the learners are not biased by the methods which have better detection rates on the frequent records.
-* The number of selected records from each difficultylevel group is inversely proportional to the percentage of records in the original KDD data set. As a result, the classification rates of distinct machine learning methods vary in a wider range, which makes it more efficient to have an accurate evaluation of different learning techniques.
-* The number of records in the train and test sets are reasonable, which makes it affordable to run the experiments on the complete set without the need to randomly select a small portion. Consequently, evaluation results of different research works will be consistent and comparable.
 
 
 References
